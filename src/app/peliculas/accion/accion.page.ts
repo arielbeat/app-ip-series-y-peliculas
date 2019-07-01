@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, ActionSheetController } from '@ionic/angular';
-<<<<<<< HEAD
-//import { LeerService, Idea } from '../../services/leer.service';
-//import { Observable } from 'rxjs';
-=======
 import { CrudService } from '../../services/crud.service';
 
 // Crear interface para array
@@ -17,7 +13,6 @@ interface pelicula {
   img: string;
   clasificacion: number;
 }
->>>>>>> 2ad970382ecc170e08094a8985077ee960c2177b
 
 @Component({
   selector: 'app-accion',
@@ -26,19 +21,6 @@ interface pelicula {
 })
 export class AccionPage implements OnInit {
 
-<<<<<<< HEAD
-  //private ideas: Observable<Idea[]>;
-
-  // Variables para HTML
-  titulo: any;
-  pais: any;
-  productora: any;
-  genero: any;
-  sinopsis: any;
-  imagen: any = 'https://firebasestorage.googleapis.com/v0/b/ip-series-y-peliculas.appspot.com/o/Dragon-Ball-Super-Broly-2.jpg?alt=media&token=fed4eae8-1f7e-4f81-84bb-7e8e3c180de8';
-  clasificacion: any;
-
-=======
   // Array para mostrar en HTML
   peliculas: any = [];
 
@@ -46,7 +28,6 @@ export class AccionPage implements OnInit {
   clasificacion: any;
 
   // Variables para funcionalidad
->>>>>>> 2ad970382ecc170e08094a8985077ee960c2177b
   ngMTipo: boolean;
   mostrarTg: boolean;
   uno: any = false;
@@ -57,17 +38,6 @@ export class AccionPage implements OnInit {
 
   constructor(
     public navController: NavController,
-<<<<<<< HEAD
-    public actionSheetController: ActionSheetController
-    /*,
-    private leerService: LeerService*/
-  ) { }
-
-  ngOnInit() {
-    //this.ideas = this.leerService.getIdeas();
-
-    //console.log(this.ideas);
-=======
     public actionSheetController: ActionSheetController,
     private crudService: CrudService
   ) { }
@@ -112,7 +82,6 @@ export class AccionPage implements OnInit {
       });
     });
 
->>>>>>> 2ad970382ecc170e08094a8985077ee960c2177b
   }
 
   volver() {
