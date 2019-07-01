@@ -45,7 +45,7 @@ export class CienciaPage implements OnInit {
   ngOnInit() {
 
     // Cargar datos desde Firebase
-    this.crudService.getPelicula('accion').subscribe(peliculas => {
+    this.crudService.getPelicula('ciencia').subscribe(peliculas => {
       peliculas.map(pelicula => {
         //console.log(pelicula.payload.doc.data());
         const data: pelicula = pelicula.payload.doc.data() as pelicula;
