@@ -16,9 +16,39 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
+      title: 'Películas',
+      url: '/peliculas',
+      icon: 'videocam'
+    },
+    {
+      title: 'Series',
+      url: '/series',
+      icon: 'play'
+    },
+    {
+      title: 'Ingresar',
+      url: '/ingresar',
+      icon: 'add'
+    },
+    {
+      title: 'Modificar',
+      url: '/modificar',
+      icon: 'create'
+    },
+    {
+      title: 'Eliminar',
+      url: '/eliminar',
+      icon: 'trash'
+    },
+    {
+      title: 'Quienes somos',
+      url: '/quienes-somos',
+      icon: 'people'
+    },
+    {
+      title: 'Cerrar sesión',
+      url: '/login',
+      icon: 'person'
     }
   ];
 
