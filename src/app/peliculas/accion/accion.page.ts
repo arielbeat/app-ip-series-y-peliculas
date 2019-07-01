@@ -1,7 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, ActionSheetController } from '@ionic/angular';
-//import { LeerService, Idea } from '../../services/leer.service';
-//import { Observable } from 'rxjs';
+import { CrudService } from '../../services/crud.service';
+
+// Crear interface para array
+interface pelicula {
+  id: string;
+  categoria: string;
+  titulo: string;
+  genero: string;
+  pais: string;
+  sinopsis: string;
+  img: string;
+  clasificacion: number;
+}
 
 @Component({
   selector: 'app-accion',
@@ -10,17 +21,13 @@ import { NavController, ActionSheetController } from '@ionic/angular';
 })
 export class AccionPage implements OnInit {
 
-  //private ideas: Observable<Idea[]>;
+  // Array para mostrar en HTML
+  peliculas: any = [];
 
-  // Variables para HTML
-  titulo: any;
-  pais: any;
-  productora: any;
-  genero: any;
-  sinopsis: any;
-  imagen: any = 'https://firebasestorage.googleapis.com/v0/b/ip-series-y-peliculas.appspot.com/o/Dragon-Ball-Super-Broly-2.jpg?alt=media&token=fed4eae8-1f7e-4f81-84bb-7e8e3c180de8';
+  // Variable para estrellas
   clasificacion: any;
 
+  // Variables para funcionalidad
   ngMTipo: boolean;
   mostrarTg: boolean;
   uno: any = false;
@@ -31,15 +38,50 @@ export class AccionPage implements OnInit {
 
   constructor(
     public navController: NavController,
-    public actionSheetController: ActionSheetController
-    /*,
-    private leerService: LeerService*/
+    public actionSheetController: ActionSheetController,
+    private crudService: CrudService
   ) { }
 
   ngOnInit() {
-    //this.ideas = this.leerService.getIdeas();
 
-    //console.log(this.ideas);
+    // Cargar datos desde Firebase
+    this.crudService.getPelicula('accion').subscribe(peliculas => {
+      peliculas.map(pelicula => {
+        //console.log(pelicula.payload.doc.data());
+        const data: pelicula = pelicula.payload.doc.data() as pelicula;
+        data.id = pelicula.payload.doc.id;
+        //console.log(data);
+        this.peliculas.push(data);
+        // Elegir clasificación
+        switch (data.clasificacion) {
+          case 5:
+            this.cinco = true;
+            this.verEstrellas5();
+            break;
+          case 4:
+            this.cuatro = true;
+            this.verEstrellas4();
+            break;
+          case 3:
+            this.tres = true;
+            this.verEstrellas3();
+            break;
+          case 2:
+            this.dos = true;
+            this.verEstrellas2();
+            break;
+          case 1:
+            this.uno = true;
+            this.verEstrellas1();
+            break;
+          default:
+            this.uno = false;
+            this.verEstrellas1();
+            break;
+        }
+      });
+    });
+
   }
 
   volver() {
