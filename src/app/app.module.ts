@@ -13,8 +13,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+<<<<<<< HEAD
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { Firebase } from '@ionic-native/firebase/ngx';
+=======
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+>>>>>>> 2ad970382ecc170e08094a8985077ee960c2177b
 
 @NgModule({
   declarations: [AppComponent],

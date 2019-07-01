@@ -1,7 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, ActionSheetController } from '@ionic/angular';
+<<<<<<< HEAD
 //import { LeerService, Idea } from '../../services/leer.service';
 //import { Observable } from 'rxjs';
+=======
+import { CrudService } from '../../services/crud.service';
+
+// Crear interface para array
+interface pelicula {
+  id: string;
+  categoria: string;
+  titulo: string;
+  genero: string;
+  pais: string;
+  sinopsis: string;
+  img: string;
+  clasificacion: number;
+}
+>>>>>>> 2ad970382ecc170e08094a8985077ee960c2177b
 
 @Component({
   selector: 'app-accion',
@@ -10,6 +26,7 @@ import { NavController, ActionSheetController } from '@ionic/angular';
 })
 export class AccionPage implements OnInit {
 
+<<<<<<< HEAD
   //private ideas: Observable<Idea[]>;
 
   // Variables para HTML
@@ -21,6 +38,15 @@ export class AccionPage implements OnInit {
   imagen: any = 'https://firebasestorage.googleapis.com/v0/b/ip-series-y-peliculas.appspot.com/o/Dragon-Ball-Super-Broly-2.jpg?alt=media&token=fed4eae8-1f7e-4f81-84bb-7e8e3c180de8';
   clasificacion: any;
 
+=======
+  // Array para mostrar en HTML
+  peliculas: any = [];
+
+  // Variable para estrellas
+  clasificacion: any;
+
+  // Variables para funcionalidad
+>>>>>>> 2ad970382ecc170e08094a8985077ee960c2177b
   ngMTipo: boolean;
   mostrarTg: boolean;
   uno: any = false;
@@ -31,6 +57,7 @@ export class AccionPage implements OnInit {
 
   constructor(
     public navController: NavController,
+<<<<<<< HEAD
     public actionSheetController: ActionSheetController
     /*,
     private leerService: LeerService*/
@@ -40,6 +67,52 @@ export class AccionPage implements OnInit {
     //this.ideas = this.leerService.getIdeas();
 
     //console.log(this.ideas);
+=======
+    public actionSheetController: ActionSheetController,
+    private crudService: CrudService
+  ) { }
+
+  ngOnInit() {
+
+    // Cargar datos desde Firebase
+    this.crudService.getPelicula('accion').subscribe(peliculas => {
+      peliculas.map(pelicula => {
+        //console.log(pelicula.payload.doc.data());
+        const data: pelicula = pelicula.payload.doc.data() as pelicula;
+        data.id = pelicula.payload.doc.id;
+        //console.log(data);
+        this.peliculas.push(data);
+        // Elegir clasificación
+        switch (data.clasificacion) {
+          case 5:
+            this.cinco = true;
+            this.verEstrellas5();
+            break;
+          case 4:
+            this.cuatro = true;
+            this.verEstrellas4();
+            break;
+          case 3:
+            this.tres = true;
+            this.verEstrellas3();
+            break;
+          case 2:
+            this.dos = true;
+            this.verEstrellas2();
+            break;
+          case 1:
+            this.uno = true;
+            this.verEstrellas1();
+            break;
+          default:
+            this.uno = false;
+            this.verEstrellas1();
+            break;
+        }
+      });
+    });
+
+>>>>>>> 2ad970382ecc170e08094a8985077ee960c2177b
   }
 
   volver() {
