@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, ActionSheetController } from '@ionic/angular';
 import { CrudService } from '../../services/crud.service';
 
-// Crear interface para array
+// Crear interface para objeto
 interface pelicula {
   id: string;
   categoria: string;
