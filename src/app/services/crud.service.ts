@@ -29,10 +29,14 @@ export class CrudService {
   getTitulos(tipo: string, categoria: string) {
     if (tipo === 'peliculas') {
       return this.angularFirestore.collection('peliculas', ref => ref.where('categoria', '==', categoria)).snapshotChanges();
-    }
-    if (tipo === 'series') {
+    } else if (tipo === 'series') {
       return this.angularFirestore.collection('series', ref => ref.where('categoria', '==', categoria)).snapshotChanges();
     }
+  }
+
+  eliminarTitulo(tipo: string, id: string) {
+    console.log(id);
+    return this.angularFirestore.collection(tipo).doc(id).delete();
   }
 
 }
