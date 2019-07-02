@@ -130,11 +130,12 @@ export class IngresarPage implements OnInit {
     datos['sinopsis'] = this.sinopsis;
     datos['imagen'] = this.imagen;
     datos['clasificacion'] = this.clasificacion;*/
-    this.crudService.insertarContenido(this.tipo, this.contenidos).then(resp => {
+    this.crudService.insertarContenido(this.tipo, this.contenidos);
+    /*.then(resp => {
       console.log('Ingresado');
     }).catch(error => {
       console.log(error);
-    });
+    });*/
 
   }
 
