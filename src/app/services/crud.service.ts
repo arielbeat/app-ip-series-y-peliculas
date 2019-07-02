@@ -23,18 +23,16 @@ export class CrudService {
   }
 
   insertarContenido(tipo: any, datos: any) {
-    const id = this.angularFirestore.createId();
-    //const ref = this.angularFirestore.collection(tipo).doc(id);
-    console.log(id);
-    
-    let respuesta = this.angularFirestore.collection(tipo).doc(id).collection(tipo).add(datos);
-    console.log(respuesta);
-    return true;
-    
-    //collection(tipo).doc(ref)
-    //const pushId = this.angularFirestore.add();
-    //console.log(pushId);
-    //return true;
+    return this.angularFirestore.collection(tipo).add(datos);
+  }
+
+  getTitulos(tipo: string, categoria: string) {
+    if (tipo === 'peliculas') {
+      return this.angularFirestore.collection('peliculas', ref => ref.where('categoria', '==', categoria)).snapshotChanges();
+    }
+    if (tipo === 'series') {
+      return this.angularFirestore.collection('series', ref => ref.where('categoria', '==', categoria)).snapshotChanges();
+    }
   }
 
 }

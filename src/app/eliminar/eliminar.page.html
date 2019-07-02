@@ -1,9 +1,43 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>eliminar</ion-title>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Eliminar
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="trash"></ion-icon>  
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-list>
+    <ion-list-header>Seleccione contenido para eliminar</ion-list-header>
+    <ion-item>
+      <ion-label position="stacked">Tipo</ion-label>
+      <ion-select placeholder="Seleccione tipo" okText="Aceptar" cancelText="Cancelar" [(ngModel)]="tipo">
+        <ion-select-option value="peliculas">Pelicula</ion-select-option>
+        <ion-select-option value="series">Serie</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Categoría</ion-label>
+      <ion-select placeholder="Seleccione categoría" okText="Aceptar" cancelText="Cancelar" [(ngModel)]="categoria">
+        <ion-select-option value="accion">Acción</ion-select-option>
+        <ion-select-option value="ciencia">Ciencia ficción</ion-select-option>
+        <ion-select-option value="comedia">Comedia</ion-select-option>
+        <ion-select-option value="terror">Terror</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Título</ion-label>
+      <ion-select *ngFor="let titulo of titulos" placeholder="Seleccione título" okText="Aceptar" cancelText="Cancelar" [(ngModel)]="id">
+        <ion-select-option value="{{titulo.id">{{titulo.titulo</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 </ion-content>

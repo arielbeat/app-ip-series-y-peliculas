@@ -16,6 +16,7 @@
 
 <ion-content>
   <ion-list>
+    <ion-list-header>Ingrese contenido para agregar</ion-list-header>
     <ion-item>
       <ion-label position="stacked">Tipo</ion-label>
       <ion-select placeholder="Seleccione tipo" okText="Aceptar" cancelText="Cancelar" [(ngModel)]="tipo">
@@ -52,6 +53,10 @@
   <ion-item>
     <ion-label position="stacked">Sinopsis</ion-label>
     <ion-textarea [(ngModel)]="sinopsis"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">URL imagen</ion-label>
+    <ion-textarea [(ngModel)]="img"></ion-textarea>
   </ion-item>
   <ion-grid>
     <ion-row class="ion-margin">

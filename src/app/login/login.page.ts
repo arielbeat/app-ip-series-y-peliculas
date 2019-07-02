@@ -22,8 +22,8 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    console.log(this.email);
-    console.log(this.password);
+    //console.log(this.email);
+    //console.log(this.password);
     if (this.email === undefined || this.email === '' || this.password === undefined || this.password === '') {
       this.toast();
     } else {
