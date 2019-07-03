@@ -20,11 +20,12 @@ Y como producto final generar una aplicación, que permita la interacción con e
 	- Categoría Comedia
 	- Categoría Terror
 - Series
-- Acerca de
--Crud
+- Quienes somos
+- Crud
     -Ingresar
     -Modificar
     -Eliminar
+- Cerrar sesion
 
 ## Componentes utilizados:
 
@@ -39,7 +40,14 @@ Y como producto final generar una aplicación, que permita la interacción con e
 
 ## Vistas:
 
-### Imagenes
+### Login
 
-![home](https://firebasestorage.googleapis.com/v0/b/ip-series-y-peliculas.appspot.com/o/logo.png?alt=media&token=3bf1d920-d431-49ae-8756-51a0b30516e7)
+![home](https://firebasestorage.googleapis.com/v0/b/ip-series-y-peliculas.appspot.com/o/login.jpg?alt=media&token=cabfe4f1-8e45-4ebb-98e5-b9a16654baa6)
 
+### Home
+
+![home](https://firebasestorage.googleapis.com/v0/b/ip-series-y-peliculas.appspot.com/o/Frontal.jpg?alt=media&token=7f4fe994-8620-4556-b35b-cdade8500613)
+
+### Items
+
+![home](https://firebasestorage.googleapis.com/v0/b/ip-series-y-peliculas.appspot.com/o/Items.jpg?alt=media&token=48ac2540-952c-4446-93af-942c2f08d31d)
