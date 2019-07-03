@@ -1,9 +1,79 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>modificar</ion-title>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Modificar
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="create"></ion-icon>  
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-list>
+    <ion-list-header>Seleccione contenido para eliminar</ion-list-header>
+    <ion-item>
+      <ion-label position="stacked">Tipo</ion-label>
+      <ion-select placeholder="Seleccione tipo" okText="Aceptar" cancelText="Cancelar" [(ngModel)]="tipo" (ionChange)="verTipo()">
+        <ion-select-option value="peliculas">Pelicula</ion-select-option>
+        <ion-select-option value="series">Serie</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Categoría</ion-label>
+      <ion-select placeholder="Seleccione categoría" okText="Aceptar" cancelText="Cancelar" [(ngModel)]="categoria" (ionChange)="verCategoria()">
+        <ion-select-option value="accion">Acción</ion-select-option>
+        <ion-select-option value="ciencia">Ciencia ficción</ion-select-option>
+        <ion-select-option value="comedia">Comedia</ion-select-option>
+        <ion-select-option value="terror">Terror</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Título</ion-label>
+      <ion-select placeholder="Seleccione título" okText="Aceptar" cancelText="Cancelar" [(ngModel)]="id" (ionChange)="cargarDatosTitulo()">
+        <ion-select-option *ngFor="let titulo of titulos" value="{{titulo.id}}">{{titulo.titulo}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <div *ngFor="let contenido of contenidos">
+    <ion-item>
+      <ion-label position="stacked">Título</ion-label>
+      <ion-input [(ngModel)]="titulo" value="{{contenido.titulo}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Género</ion-label>
+      <ion-input [(ngModel)]="genero" value="{{contenido.genero}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">País</ion-label>
+      <ion-input [(ngModel)]="pais" value="{{contenido.pais}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Productora</ion-label>
+      <ion-input [(ngModel)]="productora" value="{{contenido.productora}}"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Sinopsis</ion-label>
+      <ion-textarea [(ngModel)]="sinopsis" value="{{contenido.sinopsis}}"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">URL imagen</ion-label>
+      <ion-textarea [(ngModel)]="img" value="{{contenido.img}}"></ion-textarea>
+    </ion-item>
+  </div>  
+  <ion-grid>
+    <ion-row>
+      <ion-col size="8" offset="2">
+        <ion-button color="danger" expand="block" (click)="guardar()">
+          <ion-icon name="create" slot="start"></ion-icon>
+          Guardar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
