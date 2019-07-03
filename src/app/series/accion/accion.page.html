@@ -15,13 +15,13 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
+  <ion-grid *ngFor="let series of series">
     <ion-row>
       <ion-col>
-        <ion-img src="../../assets/jesica.jpg"></ion-img>
+        <ion-img src="{{series.img}}"></ion-img>
       </ion-col>
       <ion-col>
-        <h4>Jessica Jones</h4>
+        <h4>{{series.titulo}}</h4>
       </ion-col>
     </ion-row>
     <ion-row>
