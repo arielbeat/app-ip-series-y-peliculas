@@ -22,6 +22,7 @@ Y como producto final generar una aplicación, que permita la interacción con e
 - Series
 - Quienes somos
 - Crud
+    -Leer
     -Ingresar
     -Modificar
     -Eliminar
