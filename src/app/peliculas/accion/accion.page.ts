@@ -45,6 +45,8 @@ export class AccionPage implements OnInit {
   ngOnInit() {
 
     // Cargar datos desde Firebase
+
+    //
     this.crudService.getPelicula('accion').subscribe(peliculas => {
       peliculas.map(pelicula => {
         //console.log(pelicula.payload.doc.data());

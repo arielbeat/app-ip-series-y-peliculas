@@ -3,7 +3,7 @@ import { NavController, ActionSheetController } from '@ionic/angular';
 import { CrudService } from '../../services/crud.service';
 
 // Crear interface para array
-interface pelicula {
+interface series {
   id: string;
   categoria: string;
   titulo: string;
@@ -22,7 +22,7 @@ interface pelicula {
 export class AccionPage implements OnInit {
 
   // Array para mostrar en HTML
-  peliculas: any = [];
+  series: any = [];
 
   // Variable para estrellas
   clasificacion: any;
@@ -45,13 +45,13 @@ export class AccionPage implements OnInit {
   ngOnInit() {
 
     // Cargar datos desde Firebase
-    this.crudService.getPelicula('accion').subscribe(peliculas => {
-      peliculas.map(pelicula => {
+    this.crudService.getSeries('accion').subscribe(series => {
+      series.map(series => {
         //console.log(pelicula.payload.doc.data());
-        const data: pelicula = pelicula.payload.doc.data() as pelicula;
-        data.id = pelicula.payload.doc.id;
+        const data: series = series.payload.doc.data() as series;
+        data.id = series.payload.doc.id;
         //console.log(data);
-        this.peliculas.push(data);
+        this.series.push(data);
         // Elegir clasificación
         switch (data.clasificacion) {
           case 5:

@@ -15,13 +15,13 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
+  <ion-grid *ngFor="let pelicula of peliculas">
     <ion-row>
       <ion-col>
-        <ion-img src="../../assets/it.jpg"></ion-img>
+        <ion-img src="{{pelicula.img}}"></ion-img>
       </ion-col>
       <ion-col>
-        <h4>IT (COSA)</h4>
+        <h4>{{pelicula.titulo}}</h4>
       </ion-col>
     </ion-row>
     <ion-row>

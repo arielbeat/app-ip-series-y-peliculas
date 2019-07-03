@@ -21,7 +21,9 @@ export class CrudService {
   getPelicula(categoria: string) {
     return this.angularFirestore.collection('peliculas', ref => ref.where('categoria', '==', categoria)).snapshotChanges();
   }
-
+  getSeries(categoria: string) {
+    return this.angularFirestore.collection('series', ref => ref.where('categoria', '==', categoria)).snapshotChanges();
+  }
   insertarContenido(tipo: any, datos: any) {
     return this.angularFirestore.collection(tipo).add(datos);
   }
