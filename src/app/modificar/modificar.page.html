@@ -33,37 +33,37 @@
         <ion-select-option value="terror">Terror</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-item>
+    <ion-item *ngIf="mostrarTitulos">
       <ion-label position="stacked">Título</ion-label>
       <ion-select placeholder="Seleccione título" okText="Aceptar" cancelText="Cancelar" [(ngModel)]="id" (ionChange)="cargarDatosTitulo()">
         <ion-select-option *ngFor="let titulo of titulos" value="{{titulo.id}}">{{titulo.titulo}}</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>
-  <div *ngFor="let contenido of contenidos">
+  <div *ngIf="mostrarContenido">
     <ion-item>
-      <ion-label position="stacked">Título</ion-label>
-      <ion-input [(ngModel)]="titulo" value="{{contenido.titulo}}"></ion-input>
+      <ion-label position="stacked">Título nuevo</ion-label>
+      <ion-input [(ngModel)]="titulo"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Género</ion-label>
-      <ion-input [(ngModel)]="genero" value="{{contenido.genero}}"></ion-input>
+      <ion-input [(ngModel)]="genero"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">País</ion-label>
-      <ion-input [(ngModel)]="pais" value="{{contenido.pais}}"></ion-input>
+      <ion-input [(ngModel)]="pais"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Productora</ion-label>
-      <ion-input [(ngModel)]="productora" value="{{contenido.productora}}"></ion-input>
+      <ion-input [(ngModel)]="productora"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Sinopsis</ion-label>
-      <ion-textarea [(ngModel)]="sinopsis" value="{{contenido.sinopsis}}"></ion-textarea>
+      <ion-textarea [(ngModel)]="sinopsis"></ion-textarea>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">URL imagen</ion-label>
-      <ion-textarea [(ngModel)]="img" value="{{contenido.img}}"></ion-textarea>
+      <ion-textarea [(ngModel)]="img"></ion-textarea>
     </ion-item>
   </div>  
   <ion-grid>

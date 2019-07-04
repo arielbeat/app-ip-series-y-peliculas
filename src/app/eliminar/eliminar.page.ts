@@ -20,6 +20,8 @@ export class EliminarPage implements OnInit {
   id: string;
   titulo: string;
 
+  mostrarTitulos: boolean = false;
+
   // Array para mostrar en HTML
   titulos: any = [];
 
@@ -58,6 +60,7 @@ export class EliminarPage implements OnInit {
         data.id = titulo.payload.doc.id;
         //console.log(data);
         this.titulos.push(data);
+        this.mostrarTitulos = true;
       });
     });
   }
@@ -99,7 +102,7 @@ export class EliminarPage implements OnInit {
 
   async mensaje() {
     const toast = await this.toastController.create({
-      message: '¡Debe elegir un título!',
+      message: '¡Debe elegir un Título!',
       duration: 2500,
       position: 'bottom'
     });

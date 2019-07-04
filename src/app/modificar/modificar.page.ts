@@ -3,7 +3,7 @@ import { CrudService } from '../services/crud.service';
 import { AlertController, ToastController } from '@ionic/angular';
 
 // Crear interface para objeto
-interface contenido {
+interface titulo {
   id: string;
   titulo: string;
 }
@@ -39,7 +39,14 @@ export class ModificarPage implements OnInit {
   titulos: any = [];
   contenidos: any = [];
 
-  modificado: boolean = false;
+  // Mostrar contenido
+  mostrarTitulos: boolean = false;
+  mostrarContenido: boolean = false;
+
+  // Variable para confirmar ingreso
+  validador: boolean = false;
+  modificar: boolean = false;
+  guardado: boolean = false;
 
   constructor(
     private crudService: CrudService,
@@ -51,55 +58,57 @@ export class ModificarPage implements OnInit {
   }
 
   verTipo(){
-    console.log(this.tipo);
     if (this.categoria !== undefined) {
       this.cargarTitulos();
     }
   };
 
   verCategoria() {
-    console.log(this.categoria);
     if (this.tipo !== undefined) {
       this.cargarTitulos();
     }
   }
 
   cargarTitulos() {
+    this.mostrarContenido = false;
     // Cargar datos desde Firebase
     this.titulos = [];
     this.crudService.getTitulos(this.tipo, this.categoria).subscribe(titulos => {
       titulos.map(titulo => {
-        const data: contenido = titulo.payload.doc.data() as contenido;
+        const data: titulo = titulo.payload.doc.data() as titulo;
         data.id = titulo.payload.doc.id;
         this.titulos.push(data);
+        this.mostrarTitulos = true;
       });
     });
   }
 
   cargarDatosTitulo() {
-    console.log(this.titulos);
-    console.log(this.id);
     this.crudService.getTitulo(this.tipo, this.id).then(datos => {
-      console.log(datos);
-      console.log(datos.data());
       const data: contenidoTitulo = datos.data() as contenidoTitulo;
-      this.contenidos.push(data);
-      /*
-      datos.map(contenido => {
-        const data: contenidoTitulo = datos.payload.doc.data() as contenidoTitulo;
-        data.id = datos.payload.doc.id;
-        console.log(data.id);
-        this.contenidos.push(data);
-      //});*/
+      this.titulo = data.titulo;
+      this.genero = data.genero;
+      this.pais = data.pais;
+      this.productora = data.productora;
+      this.sinopsis = data.sinopsis;
+      this.img = data.img;
+      this.mostrarContenido = true;
     });
   }
 
   guardar() {
-    if (this.titulo !== undefined) {
-      this.confirmar();
-    } else {
+    if (this.tipo === undefined || this.categoria === undefined) {
       // lanzar toast
-      this.mensaje();
+      this.mensajeTipoCategoria();
+    } else if (this.id === undefined) {
+      this.mensajeTitulo();
+    } else {
+      this.validador = this.validar();
+      if (this.validador) {
+        this.confirmar();
+      } else {
+        this.vacios();
+      }
     }
   }
 
@@ -120,8 +129,8 @@ export class ModificarPage implements OnInit {
           handler: (dato) => {
             // Confirmado
             console.log('confirmado');
-            // Función eliminar confirmado
-            //this.modificarTitulo();
+            // Función modificar Título
+            this.modificarTitulo();
           }
         }
       ]
@@ -129,37 +138,93 @@ export class ModificarPage implements OnInit {
     alert.present();
   }
 
-  async mensaje() {
+  async mensajeTipoCategoria() {
     const toast = await this.toastController.create({
-      message: '¡Debe elegir un título!',
+      message: '¡Debe seleccionar Tipo y Categoría!',
       duration: 2500,
       position: 'bottom'
     });
     toast.present();
-  }
-  /*
-  modificarTitulo() {
-    this.crudService.eliminarTitulo(this.tipo, this.id).then(respuesta => {
-      console.log(respuesta);
-      console.log(this.id);
-      this.borrado = true;
-      if (this.borrado) {
-        this.cargarTitulos();
-        this.eliminado();
-      }
-    }).catch(error => {
-      console.log(error);
-      this.borrado = false;
-    });
   }
 
-  async eliminado() {
+  async mensajeTitulo() {
     const toast = await this.toastController.create({
-      message: '¡Eliminado exitosamente!',
+      message: '¡Debe seleccionar un Título!',
       duration: 2500,
       position: 'bottom'
     });
     toast.present();
   }
-*/
+
+  modificarTitulo() {
+    let datos: Object = {};
+    this.guardado = false;
+    this.validador = this.validar();
+    if  (this.validador) {
+      datos  = {
+        'titulo': this.titulo,
+        'genero': this.genero,
+        'pais': this.pais,
+        'productora': this.productora,
+        'sinopsis': this.sinopsis,
+        'img': this.img
+      };
+      this.crudService.modificarTitulo(this.tipo, this.id, datos).then(() => {
+        this.guardado = true;
+      }).catch(error => {
+        console.log(error);
+        this.guardado = false;
+      }).finally(() => {
+        if (this.guardado) {
+          this.mensajeGuardado();
+          this.cargarTitulos();
+        }
+      });
+    } else {
+      this.vacios();
+    }
+  }
+
+  async mensajeGuardado() {
+    const toast = await this.toastController.create({
+      message: '¡Guardado exitosamente!',
+      duration: 2500,
+      position: 'bottom'
+    });
+    toast.present();
+  }
+
+  // Validar vacios
+  validar() {
+    if (this.titulo === undefined || this.titulo === '') {
+      return false;
+    }
+    if (this.genero === undefined || this.genero === '') {
+      return false;
+    }
+    if (this.pais === undefined || this.pais === '') {
+      return false;
+    }
+    if (this.productora === undefined || this.productora === '') {
+      return false;
+    }
+    if (this.sinopsis === undefined || this.sinopsis === '') {
+      return false;
+    }
+    if (this.img === undefined || this.img === '') {
+      return false;
+    }
+    return true;
+  }
+
+  // Alert para vacíos
+  async vacios() {
+    const alert = await this.alertController.create({
+      header: 'Error al guardar datos',
+      message: '¡Ingrese los datos correctamente!',
+      buttons: ['Aceptar']
+    });
+    alert.present();
+  }
+
 }

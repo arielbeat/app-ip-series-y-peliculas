@@ -33,7 +33,7 @@
         <ion-select-option value="terror">Terror</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-item>
+    <ion-item *ngIf="mostrarTitulos">
       <ion-label position="stacked">Título</ion-label>
       <ion-select placeholder="Seleccione título" okText="Aceptar" cancelText="Cancelar" [(ngModel)]="id">
         <ion-select-option *ngFor="let titulo of titulos" value="{{titulo.id}}">{{titulo.titulo}}</ion-select-option>

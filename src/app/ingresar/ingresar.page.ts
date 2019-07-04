@@ -94,9 +94,10 @@ export class IngresarPage implements OnInit {
 
   // Función ingresar
   ingresar() {
+    let datos: Object = {};
     this.validador = this.validar();
     console.log(this.validador);
-    let datos: Object = {
+    datos  = {
       'categoria': this.categoria,
       'titulo': this.titulo,
       'genero': this.genero,
@@ -132,7 +133,6 @@ export class IngresarPage implements OnInit {
       // Alert
       this.vacios();
     }
-    datos = {};
   }
 
   // Validar vacios
