@@ -1,8 +1,9 @@
-# ip-series-y-peliculas
-EPE 3 y 4 Desarrollo de aplicaciones móviles
+# IP Series Y Peliculas
+EPE 3 y 4 para Desarrollo de aplicaciones móviles
 :smile:
+
 A continuación se presentara el desarrollo de la App denominada IP Series Y Películas. 
-Dentro de los componentes utilizados para el desarrollo de la aplicación podemos mencionar como relevantes el uso e implementación del servicio de cloud de firebase, que nos permite realizar tareas de manipulación, actualización y eliminación (CRUD) de colecciones dentro de la base de datos de firebase. Asimismo establecer autenticación y almacenamiento de imágenes (Cloud Storage) en firebase.
+Dentro de los componentes utilizados para el desarrollo de la aplicación podemos mencionar como relevantes el uso e implementación del servicios Cloud de Firebase, que nos permite realizar tareas de manipulación, actualización y eliminación (CRUD) de colecciones dentro de la base de datos de Firebase. Asimismo establecer autenticación y almacenamiento de imágenes (Cloud Storage) en Firebase.
 Y como producto final generar una aplicación, que permita la interacción con el usuario dado la pauta entregada por el docente.
 
 
@@ -22,22 +23,28 @@ Y como producto final generar una aplicación, que permita la interacción con e
 - Series
 - Quienes somos
 - Crud
-    -Leer
-    -Ingresar
-    -Modificar
-    -Eliminar
+    - Leer
+    - Ingresar
+    - Modificar
+    - Eliminar
 - Cerrar sesion
 
 ## Componentes utilizados:
 
-- tabs
+- ion-toolbar
+- ion-card
+- ion-button
+- ion-toast
 - ion-grid
 - ion-radio
 - ion-toggle
 - ion-action-sheet
-- ion-toolbar
-- ion-card
 - ion-checkbox
+- ion-alert
+
+## Componentes extras:
+
+- ion-select
 
 ## Vistas:
 
